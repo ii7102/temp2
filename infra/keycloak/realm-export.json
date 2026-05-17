@@ -24,8 +24,8 @@
       "serviceAccountsEnabled": false,
       "rootUrl": "http://localhost",
       "baseUrl": "http://localhost",
-      "redirectUris": ["http://localhost/*", "http://localhost/auth/*", "https://*.app.github.dev/*"],
-      "webOrigins": ["http://localhost", "https://*.app.github.dev"],
+      "redirectUris": ["http://localhost/*", "https://__FRONTEND_HOST__/*"],
+      "webOrigins": ["http://localhost", "https://__FRONTEND_HOST__"],
       "protocol": "openid-connect",
       "protocolMappers": [
         {
@@ -49,36 +49,10 @@
       "standardFlowEnabled": false,
       "directAccessGrantsEnabled": false,
       "serviceAccountsEnabled": true,
-      "secret": "change-me-frontend-client-secret",
+      "secret": "__REPLACE_WITH_ENV_PULSEFIT_BACKEND_CLIENT_SECRET__",
       "protocol": "openid-connect",
-      "redirectUris": ["http://localhost/*", "https://*.app.github.dev/*"],
-      "webOrigins": ["http://localhost", "https://*.app.github.dev"]
-    }
-  ],
-  "users": [
-    {
-      "username": "alex@pulsefit.local",
-      "email": "alex@pulsefit.local",
-      "enabled": true,
-      "emailVerified": true,
-      "firstName": "Alex",
-      "lastName": "Morgan",
-      "realmRoles": ["user"],
-      "credentials": [
-        { "type": "password", "value": "Password123!", "temporary": false }
-      ]
-    },
-    {
-      "username": "admin@pulsefit.local",
-      "email": "admin@pulsefit.local",
-      "enabled": true,
-      "emailVerified": true,
-      "firstName": "PulseFit",
-      "lastName": "Admin",
-      "realmRoles": ["admin"],
-      "credentials": [
-        { "type": "password", "value": "Admin123!", "temporary": false }
-      ]
+      "redirectUris": ["http://localhost/*", "https://__BACKEND_HOST__/*"],
+      "webOrigins": ["http://localhost", "https://__BACKEND_HOST__"]
     }
   ],
   "defaultDefaultClientScopes": ["profile", "email", "roles", "web-origins"]
