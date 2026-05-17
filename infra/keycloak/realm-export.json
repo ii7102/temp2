@@ -1,0 +1,85 @@
+{
+  "realm": "pulsefit",
+  "enabled": true,
+  "registrationAllowed": true,
+  "resetPasswordAllowed": true,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "verifyEmail": false,
+  "roles": {
+    "realm": [
+      { "name": "guest", "description": "Unauthenticated browsing role" },
+      { "name": "user", "description": "Registered member" },
+      { "name": "admin", "description": "Platform administrator" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "pulsefit-frontend",
+      "name": "PulseFit Frontend",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "rootUrl": "http://localhost",
+      "baseUrl": "http://localhost",
+      "redirectUris": ["http://localhost/*", "http://localhost/auth/*"],
+      "webOrigins": ["http://localhost"],
+      "protocol": "openid-connect",
+      "protocolMappers": [
+        {
+          "name": "backend-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.client.audience": "pulsefit-backend",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "pulsefit-backend",
+      "name": "PulseFit Backend",
+      "enabled": true,
+      "publicClient": false,
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": true,
+      "secret": "change-me-frontend-client-secret",
+      "protocol": "openid-connect",
+      "redirectUris": ["http://localhost/*"],
+      "webOrigins": ["http://localhost"]
+    }
+  ],
+  "users": [
+    {
+      "username": "alex@pulsefit.local",
+      "email": "alex@pulsefit.local",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Alex",
+      "lastName": "Morgan",
+      "realmRoles": ["user"],
+      "credentials": [
+        { "type": "password", "value": "Password123!", "temporary": false }
+      ]
+    },
+    {
+      "username": "admin@pulsefit.local",
+      "email": "admin@pulsefit.local",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "PulseFit",
+      "lastName": "Admin",
+      "realmRoles": ["admin"],
+      "credentials": [
+        { "type": "password", "value": "Admin123!", "temporary": false }
+      ]
+    }
+  ],
+  "defaultDefaultClientScopes": ["profile", "email", "roles", "web-origins"]
+}
