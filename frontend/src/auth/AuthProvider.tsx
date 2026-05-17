@@ -29,6 +29,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         onLoad: 'check-sso',
         pkceMethod: 'S256',
         checkLoginIframe: false,
+        silentCheckSsoRedirectUri: `${window.location.origin}/silent-check-sso.html`,
+        silentCheckSsoFallback: false,
       })
       .then((isAuthenticated) => {
         setKeycloak(client)

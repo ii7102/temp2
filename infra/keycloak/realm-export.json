@@ -24,8 +24,8 @@
       "serviceAccountsEnabled": false,
       "rootUrl": "http://localhost",
       "baseUrl": "http://localhost",
-      "redirectUris": ["http://localhost/*", "http://localhost/auth/*"],
-      "webOrigins": ["http://localhost"],
+      "redirectUris": ["http://localhost/*", "http://localhost/auth/*", "https://*.app.github.dev/*"],
+      "webOrigins": ["http://localhost", "https://*.app.github.dev"],
       "protocol": "openid-connect",
       "protocolMappers": [
         {
@@ -51,8 +51,8 @@
       "serviceAccountsEnabled": true,
       "secret": "change-me-frontend-client-secret",
       "protocol": "openid-connect",
-      "redirectUris": ["http://localhost/*"],
-      "webOrigins": ["http://localhost"]
+      "redirectUris": ["http://localhost/*", "https://*.app.github.dev/*"],
+      "webOrigins": ["http://localhost", "https://*.app.github.dev"]
     }
   ],
   "users": [
